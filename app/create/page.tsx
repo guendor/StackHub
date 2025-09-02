@@ -3,10 +3,11 @@ import { useMemo, useState } from 'react';
 import { Input, Label, Button, Card } from '@/components/ui';
 import { LS_KEYS, Listing } from '@/lib/models';
 import { load, save } from '@/lib/storage';
+import { currentUser } from '@/lib/auth';
 
 
 export default function Page(){
-const u = load(LS_KEYS.user, null);
+const u = currentUser();
 if (!u || u.role!=='Jogador') return <div className="max-w-3xl mx-auto mt-6"><Card>Área restrita ao Jogador.</Card></div>;
 
 

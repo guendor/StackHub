@@ -2,10 +2,11 @@
 import { Card, Button } from '@/components/ui';
 import { LS_KEYS, Interest, Listing } from '@/lib/models';
 import { load } from '@/lib/storage';
+import { currentUser } from '@/lib/auth';
 
 
 export default function Page(){
-const u = load(LS_KEYS.user, null);
+const u = currentUser();
 if(!u) return <div className="max-w-3xl mx-auto mt-6"><Card>Faça login para ver seus interesses.</Card></div>;
 const interests = load<Interest[]>(LS_KEYS.interests, []).filter(i=>i.investorId===u.id).sort((a,b)=>b.createdAt-a.createdAt);
 const listings = load<Listing[]>(LS_KEYS.listings, []);

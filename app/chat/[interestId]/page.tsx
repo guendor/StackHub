@@ -1,12 +1,13 @@
 'use client';
 import { useState } from 'react';
 import { Card, Button, Input } from '@/components/ui';
-import { LS_KEYS, Threads, Interest, Listing } from '@/lib/models';
+import { LS_KEYS, Threads, Interest, Listing, User } from '@/lib/models';
 import { load, save } from '@/lib/storage';
+import { currentUser } from '@/lib/auth';
 
 
 export default function Page({ params }:{ params:{ interestId: string } }){
-const u = load(LS_KEYS.user, null);
+const u = currentUser();
 if(!u) return <div className="max-w-3xl mx-auto mt-6"><Card>Faça login para acessar o chat.</Card></div>;
 const all = load<Threads>(LS_KEYS.messages, {});
 const thread = all[params.interestId] || [];
