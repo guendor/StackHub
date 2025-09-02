@@ -1,0 +1,59 @@
+# StakeHub 🎯
+
+**StakeHub** é um MVP de marketplace para *poker staking* (cavalagem), conectando **Jogadores** (horses) que desejam vender cotas de torneios e **Investidores** (backers) interessados em comprar essas cotas.
+
+> 🚧 Projeto em desenvolvimento — versão inicial (MVP).  
+> **Atenção:** A plataforma **não processa pagamentos**. O propósito é apenas conectar as partes e organizar anúncios.
+
+---
+
+## 🔎 Conceito
+
+- **Jogadores** podem publicar anúncios com detalhes do torneio (buy-in, add-on, taxas, premiação garantida, nº de cotas, % por cota).  
+
+- **Investidores** podem navegar pelo marketplace, filtrar anúncios e registrar interesse em comprar cotas.  
+- O app calcula automaticamente **custo total** e **preço por cota**.  
+- Perfis de jogadores podem exibir bio, conquistas e links externos.  
+
+---
+
+## 🚀 Tecnologias
+
+- [Next.js](https://nextjs.org/) + [React](https://react.dev/)  
+- [Tailwind CSS](https://tailwindcss.com/)  
+- [Supabase](https://supabase.com/) (Auth, Database, Storage)  
+- TypeScript  
+
+---
+
+## 📂 Estrutura principal
+
+- `/app` → páginas e rotas (App Router)  
+- `/app/api` → handlers de API (listings, interests, profiles)  
+- `/components` → UI (inputs, modals, toasts)  
+- `/lib` → helpers (supabase client, slug generator)  
+- `/types` → tipagens globais  
+- `/db` → migrações SQL (tabelas + policies RLS)  
+
+---
+
+## 🛠️ Como rodar localmente
+
+1. Clone o repositório:
+
+   ```bash
+   git clone https://github.com/seu-usuario/stakehub.git
+   cd stakehub
+
+2. Instale as dependências:
+
+   npm install
+
+3. Configure o .env.local:
+
+   NEXT_PUBLIC_SUPABASE_URL="your-supabase-url"
+   NEXT_PUBLIC_SUPABASE_ANON_KEY="your-anon-key"
+
+4. Rode em modo desenvolvimento:
+
+   npm run dev
