@@ -17,12 +17,8 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "incremental": true,
-    "types": [
-      "vitest/globals"
-    ],
-    "baseUrl": ".", // 👈 importante
-    "paths": { // 👈 importante
+    "baseUrl": ".",
+    "paths": {
       "@/*": [
         "./*"
       ],
@@ -36,11 +32,15 @@
         "lib/*"
       ]
     },
+    "types": [
+      "vitest/globals"
+    ],
     "plugins": [
       {
         "name": "next"
       }
-    ]
+    ],
+    "incremental": true
   },
   "include": [
     "next-env.d.ts",
