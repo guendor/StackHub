@@ -18,10 +18,10 @@ const freshListings=load<Listing[]>(LS_KEYS.listings,[]);
 const lf=freshListings.find(x=>x.id===params.id); const i=interests.find(x=>x.id===interestId);
 if(!lf||!i) return; const curr=lf.sharesOpen ?? lf.sharesTotal; if(i.qty>curr){ alert('As cotas mudaram e não há disponibilidade suficiente.'); return; }
 const nl=freshListings.map(x=>x.id!==lf.id?x:{...x,sharesOpen:Math.max(0,curr - i.qty)});
-const ni=interests.map(x=>x.id!==i.id?x:{...x,status:'ACCEPTED'});
+const ni=interests.map(x=>x.id!==i.id?x:{...x,status:'ACCEPTED' as const});
 setBoth(nl,ni); alert('Reserva aceita. Chat e WhatsApp liberados.');
 };
-const decline=(interestId:string)=>{ const ni=interests.map(x=>x.id!==interestId?x:{...x,status:'DECLINED'}); save(LS_KEYS.interests,ni); setInterests(ni); };
+const decline=(interestId:string)=>{ const ni=interests.map(x=>x.id!==interestId?x:{...x,status:'DECLINED' as const}); save(LS_KEYS.interests,ni); setInterests(ni); };
 const related=interests.filter(i=>i.listingId===params.id).sort((a,b)=>b.createdAt-a.createdAt);
 
 
